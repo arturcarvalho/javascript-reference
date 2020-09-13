@@ -1,0 +1,19 @@
+{
+  "Add js snippet for markdown": {
+    "prefix": "mdjs",
+    "body": ["```javascript", "$1", "```"],
+    "description": "Add js snippet for markdown"
+  },
+  "Add js snippet for markdown with func": {
+    "prefix": "mdjsf",
+    "body": [
+      "```javascript",
+      "// $1",
+      "function f() {",
+      "  return",
+      "}",
+      "```"
+    ],
+    "description": "Add js snippet for markdown"
+  }
+}
