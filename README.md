@@ -1,1 +1,1 @@
-# javascript-reference
+# Javascript Reference
