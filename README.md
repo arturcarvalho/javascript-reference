@@ -52,7 +52,7 @@ function capitalizeFirstLetter(string) {
 
 ```javascript
 // https://stackoverflow.com/a/5915122/1013
-function(items) {
+function rand(items) {
   return items[Math.floor(Math.random() * items.length)];
 }
 ```
