@@ -98,6 +98,8 @@ f(); // [true, true, true, true, true]
 ## Double bang is the same as Boolean
 
 ```javascript
+// todo: check if it's exactly the same.
+// It's basically !(!0) that is converted to !(true) which in turn becomes false
 !!0; // false
 ```
 
