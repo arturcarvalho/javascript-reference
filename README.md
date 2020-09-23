@@ -6,7 +6,7 @@ The type of null is not null as expected. It's object.
 
 ```javascript
 // www.justjavascript.com
-typeof null === "object"; // true
+typeof null === 'object'; // true
 ```
 
 ## Add element at the beginning (left) of the array using the spread operator.
@@ -44,7 +44,7 @@ return arr; // [1, 2, 3, 4]
 ```javascript
 // https://stackoverflow.com/a/1026087/1013
 function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 ```
 
@@ -53,7 +53,7 @@ function capitalizeFirstLetter(string) {
 ```javascript
 // https://stackoverflow.com/a/5915122/1013
 function rand(items) {
-  return items[Math.floor(Math.random() * items.length)];
+	return items[Math.floor(Math.random() * items.length)];
 }
 ```
 
@@ -64,8 +64,8 @@ There are only **6 falsy values**. The others are truthy.
 ```javascript
 // https://developer.mozilla.org/en-US/docs/Glossary/Falsy
 function f() {
-  // prettier-ignore
-  return [
+	// prettier-ignore
+	return [
       Boolean(false),
       Boolean(''),
       Boolean(``),
@@ -84,21 +84,17 @@ f(); // [false, false, false, false, false, false, false, false, false]
 ```javascript
 // https://developer.mozilla.org/en-US/docs/Glossary/Falsy
 function f() {
-  return [
-    Boolean(new Boolean(false)),
-    Boolean("false"),
-    Boolean({}),
-    Boolean([]),
-    Boolean(-1),
-  ];
+	return [Boolean(new Boolean(false)), Boolean('false'), Boolean({}), Boolean([]), Boolean(-1)];
 }
 f(); // [true, true, true, true, true]
 ```
 
 ## Double bang is the same as Boolean
 
+Double bang is like not not something.
+Todo: check if it's exactly the same.
+
 ```javascript
-// todo: check if it's exactly the same.
 // It's basically !(!0) that is converted to !(true) which in turn becomes false
 !!0; // false
 ```
@@ -108,11 +104,11 @@ f(); // [true, true, true, true, true]
 ```javascript
 // https://stackoverflow.com/questions/1758576/multiple-left-hand-assignment-with-javascript/1758912#1758912
 function f() {
-  //prettier-ignore
-  var a1 = a2 = 1 // this is like var a1 = (a2 = 1)
-  //prettier-ignore
-  var b1 = 1, b2 = 1
-  return [window.a1, window.a2, window.b1, window.b2];
+	//prettier-ignore
+	var a1 = a2 = 1 // this is like var a1 = (a2 = 1)
+	//prettier-ignore
+	var b1 = 1, b2 = 1
+	return [window.a1, window.a2, window.b1, window.b2];
 }
 
 f(); // [undefined, 1, undefined, undefined]
@@ -131,8 +127,8 @@ typeof true; // "boolean"
 typeof 1; // "number"
 typeof 1.1; // "number"
 typeof 2n; // "bigint"
-typeof "some text"; // "string
-typeof Symbol("some value"); // "symbol"
+typeof 'some text'; // "string
+typeof Symbol('some value'); // "symbol"
 typeof function g() {}; // "function"
 typeof {}; // "object"
 typeof []; // "object"
@@ -153,18 +149,16 @@ typeof typeof 10; // "string" (typeof returns string "number")
 // Sync BEFORE promises (microtask) BEFORE settimeout (macrotask)
 const result = [];
 function f() {
-  setTimeout(() => {
-    result.push("settimeout");
-  }, 0);
-  Promise.resolve().then(() => result.push("promise"));
-  Promise.resolve().then(
-    result.push("this is not a function, so it executes sync")
-  );
-  result.push("sync");
+	setTimeout(() => {
+		result.push('settimeout');
+	}, 0);
+	Promise.resolve().then(() => result.push('promise'));
+	Promise.resolve().then(result.push('this is not a function, so it executes sync'));
+	result.push('sync');
 }
 f();
 setTimeout(() => {
-  console.log(result);
+	console.log(result);
 }, 1);
 ```
 
@@ -185,16 +179,16 @@ setTimeout(() => {
 ```javascript
 //  ASI https://stackoverflow.com/a/2846298/1013
 function f() {
-  return {
-    a: "hello",
-  };
+	return {
+		a: 'hello',
+	};
 }
 
 function g() {
-  return;
-  {
-    a: "hello";
-  }
+	return;
+	{
+		a: 'hello';
+	}
 }
 
 f(); // {a: "hello"}
@@ -206,7 +200,7 @@ g(); // undefined
 ```javascript
 //
 function f() {
-  return 2 / 0 === Infinity;
+	return 2 / 0 === Infinity;
 }
 f(); // true
 ```
@@ -215,8 +209,8 @@ f(); // true
 
 ```javascript
 Number.isNaN(0 / 0); // true
-Number.isNaN("hey" / 0); // true
-Number.isNaN("hey"); // false
+Number.isNaN('hey' / 0); // true
+Number.isNaN('hey'); // false
 ```
 
 ## Floating point math error
@@ -233,17 +227,32 @@ Number.isNaN("hey"); // false
 0.1 + 0.2; // 0.30000000000000004
 ```
 
-## palindrome in less than 160 characters
+## Palindrome in less than 160 characters
 
 ```javascript
 // The same word if written back and forth.
 // https://www.toptal.com/javascript/interview-questions
 function f(str) {
-  return str === str.split("").reverse().join("");
+	return str === str.split('').reverse().join('');
 }
 
-f("aba"); // true
-f("aab"); // false
+f('aba'); // true
+f('aab'); // false
+```
+
+# React
+
+## Forgetting to return a function
+
+// inspiration https://twitter.com/donavon/status/1308468196559773696?s=12
+
+```javascript
+useEffect(() => {
+	const timerID = setTimeout(() => {
+		// do stuff
+	}, 2000);
+	return clearTimeout(timerID);
+}, []);
 ```
 
 # Notes
