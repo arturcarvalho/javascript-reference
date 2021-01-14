@@ -59,7 +59,7 @@ function rand(items) {
 
 ## Falsy values
 
-There are only **6 falsy values**. The others are truthy.
+There are only **8 falsy values**. The others are truthy.
 
 ```javascript
 // https://developer.mozilla.org/en-US/docs/Glossary/Falsy
@@ -71,12 +71,14 @@ function f() {
       Boolean(``),
       Boolean(""),
       Boolean(0),
+      Boolean(0n),
       Boolean(-0),
+      Boolean(-0n),
       Boolean(NaN),
       Boolean(null),
       Boolean(undefined)]
 }
-f(); // [false, false, false, false, false, false, false, false, false]
+f(); // returns array of `false`s
 ```
 
 ## Unexpected Truthy Values
