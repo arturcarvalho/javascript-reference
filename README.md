@@ -135,6 +135,9 @@ typeof function g() {}; // "function"
 typeof {}; // "object"
 typeof []; // "object"
 typeof new Date(); // "object"
+
+
+typeof Boolean // "function"
 ```
 
 ## Double typeof
